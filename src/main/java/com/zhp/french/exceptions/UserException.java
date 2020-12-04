@@ -1,4 +1,4 @@
 package com.zhp.french.exceptions;
 
-public class ExceptionPlaceholder {
+public class UserException {
 }

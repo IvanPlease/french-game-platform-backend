@@ -1,4 +1,4 @@
 package com.zhp.french.service;
 
-public class ServicePlaceholder {
+public class UserService {
 }

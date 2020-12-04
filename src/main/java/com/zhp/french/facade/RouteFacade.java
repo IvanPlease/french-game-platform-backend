@@ -1,4 +1,4 @@
 package com.zhp.french.facade;
 
-public class FacadePlaceholder {
+public class RouteFacade {
 }

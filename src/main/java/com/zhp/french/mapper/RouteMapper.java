@@ -1,4 +1,4 @@
 package com.zhp.french.mapper;
 
-public class MapperPlaceholder {
+public class RouteMapper {
 }
