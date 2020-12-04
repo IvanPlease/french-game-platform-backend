@@ -1,1 +1,1 @@
-"#French Game Platform - Backend repository" 
+#French Game Platform - Backend repository
