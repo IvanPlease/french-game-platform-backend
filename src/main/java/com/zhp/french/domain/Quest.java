@@ -1,36 +1,36 @@
 package com.zhp.french.domain;
 
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
+@Entity(name = "_quests")
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Entity(name = "_quests")
+@Builder
+@Data
 public class Quest {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @NotNull
     private String content;
     @NotNull
     private String answer;
     @NotNull
-    private int posX;
+    private Long posX;
     @NotNull
-    private int posY;
+    private Long posY;
     @NotNull
     @OneToOne(cascade = CascadeType.ALL)
     private Route route;
     @ManyToMany(
             cascade = CascadeType.MERGE,
             fetch = FetchType.EAGER)
-    private Set<Board> boards;
+    @Builder.Default
+    private Set<Board> boards = new HashSet<>();
 }

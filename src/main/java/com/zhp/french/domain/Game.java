@@ -1,24 +1,21 @@
 package com.zhp.french.domain;
 
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
+@Entity(name = "_games")
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Entity(name = "_games")
+@Builder
+@Data
 public class Game {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @NotNull
     private String name;
     @NotNull
@@ -34,5 +31,14 @@ public class Game {
     @ManyToMany(
             cascade = CascadeType.MERGE,
             fetch = FetchType.EAGER)
-    private Set<User> users;
+    @Builder.Default
+    private Map<Long, User> users = new HashMap<>();
+    @NotNull
+    @ManyToMany(
+            targetEntity = Quest.class,
+            mappedBy = "boards",
+            cascade = CascadeType.MERGE,
+            fetch = FetchType.EAGER)
+    @Builder.Default
+    private Set<Quest> quests = new HashSet<>();
 }

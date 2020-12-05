@@ -2,6 +2,8 @@ package com.zhp.french.service;
 
 import com.zhp.french.domain.Board;
 import com.zhp.french.domain.BoardDto;
+import com.zhp.french.domain.Board;
+import com.zhp.french.domain.BoardDto;
 import com.zhp.french.exceptions.BoardDontExistsException;
 import com.zhp.french.exceptions.BoardExistsException;
 import com.zhp.french.exceptions.BoardNotFoundException;
@@ -35,22 +37,28 @@ public class BoardService {
     }
 
     public BoardDto create(BoardDto dto) {
-        isBoardNotExisting(dto.getId());
+        if(dto.getId() != null){
+            isBoardNotExisting(dto.getId());
+        }
         Board mapped = mapper.mapToBoard(dto);
         Board saved = repository.save(mapped);
         return mapper.mapToBoardDto(saved);
     }
 
     public BoardDto update(BoardDto dto) {
-        isBoardExisting(dto.getId());
+        if(dto.getId() != null){
+            isBoardNotExisting(dto.getId());
+        }
         Board mapped = mapper.mapToBoard(dto);
         Board saved = repository.save(mapped);
         return mapper.mapToBoardDto(saved);
     }
 
     public void delete(Long id) {
-        isBoardNotExisting(id);
-        repository.deleteById(id);
+        if(id != null){
+            isBoardNotExisting(id);
+            repository.deleteById(id);
+        }
     }
 
     private void isBoardNotExisting(Long id) {

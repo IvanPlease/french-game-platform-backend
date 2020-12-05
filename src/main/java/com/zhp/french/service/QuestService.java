@@ -2,6 +2,8 @@ package com.zhp.french.service;
 
 import com.zhp.french.domain.Quest;
 import com.zhp.french.domain.QuestDto;
+import com.zhp.french.domain.Quest;
+import com.zhp.french.domain.QuestDto;
 import com.zhp.french.exceptions.QuestDontExistsException;
 import com.zhp.french.exceptions.QuestExistsException;
 import com.zhp.french.exceptions.QuestNotFoundException;
@@ -35,22 +37,28 @@ public class QuestService {
     }
 
     public QuestDto create(QuestDto dto) {
-        isQuestNotExisting(dto.getId());
+        if(dto.getId() != null){
+            isQuestNotExisting(dto.getId());
+        }
         Quest mapped = mapper.mapToQuest(dto);
         Quest saved = repository.save(mapped);
         return mapper.mapToQuestDto(saved);
     }
 
     public QuestDto update(QuestDto dto) {
-        isQuestExisting(dto.getId());
+        if(dto.getId() != null){
+            isQuestNotExisting(dto.getId());
+        }
         Quest mapped = mapper.mapToQuest(dto);
         Quest saved = repository.save(mapped);
         return mapper.mapToQuestDto(saved);
     }
 
     public void delete(Long id) {
-        isQuestNotExisting(id);
-        repository.deleteById(id);
+        if(id != null){
+            isQuestNotExisting(id);
+            repository.deleteById(id);
+        }
     }
 
     private void isQuestNotExisting(Long id) {

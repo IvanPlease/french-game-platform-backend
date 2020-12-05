@@ -3,7 +3,6 @@ package com.zhp.french.controller;
 import com.zhp.french.domain.BoardDto;
 import com.zhp.french.facade.BoardFacade;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class UserBGDto {
-    private long id;
+    private Long id;
     private String firstname;
     private String lastname;
     private String email;

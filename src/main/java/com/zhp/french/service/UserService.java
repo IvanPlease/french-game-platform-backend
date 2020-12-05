@@ -35,22 +35,28 @@ public class UserService {
     }
 
     public UserDto create(UserDto dto) {
-        isUserNotExisting(dto.getId());
+        if(dto.getId() != null){
+            isUserNotExisting(dto.getId());
+        }
         User mapped = mapper.mapToUser(dto);
         User saved = repository.save(mapped);
         return mapper.mapToUserDto(saved);
     }
 
     public UserDto update(UserDto dto) {
-        isUserExisting(dto.getId());
+        if(dto.getId() != null){
+            isUserNotExisting(dto.getId());
+        }
         User mapped = mapper.mapToUser(dto);
         User saved = repository.save(mapped);
         return mapper.mapToUserDto(saved);
     }
 
     public void delete(Long id) {
-        isUserNotExisting(id);
-        repository.deleteById(id);
+        if(id != null){
+            isUserNotExisting(id);
+            repository.deleteById(id);
+        }
     }
 
     private void isUserNotExisting(Long id) {

@@ -1,5 +1,6 @@
 package com.zhp.french.service;
 
+import com.zhp.french.domain.*;
 import com.zhp.french.domain.Game;
 import com.zhp.french.domain.GameDto;
 import com.zhp.french.exceptions.GameDontExistsException;
@@ -35,22 +36,28 @@ public class GameService {
     }
 
     public GameDto create(GameDto dto) {
-        isGameNotExisting(dto.getId());
+        if(dto.getId() != null){
+            isGameNotExisting(dto.getId());
+        }
         Game mapped = mapper.mapToGame(dto);
         Game saved = repository.save(mapped);
         return mapper.mapToGameDto(saved);
     }
 
     public GameDto update(GameDto dto) {
-        isGameExisting(dto.getId());
+        if(dto.getId() != null){
+            isGameNotExisting(dto.getId());
+        }
         Game mapped = mapper.mapToGame(dto);
         Game saved = repository.save(mapped);
         return mapper.mapToGameDto(saved);
     }
 
     public void delete(Long id) {
-        isGameNotExisting(id);
-        repository.deleteById(id);
+        if(id != null){
+            isGameNotExisting(id);
+            repository.deleteById(id);
+        }
     }
 
     private void isGameNotExisting(Long id) {

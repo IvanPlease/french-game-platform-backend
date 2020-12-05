@@ -1,23 +1,24 @@
 package com.zhp.french.domain;
 
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
+@Entity(name = "_users")
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Entity(name = "_users")
+@Builder
+@Data
 public class User {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @NotNull
     private String firstname;
     @NotNull
@@ -30,5 +31,6 @@ public class User {
             mappedBy = "users",
             cascade = CascadeType.MERGE,
             fetch = FetchType.EAGER)
-    private Set<Game> games;
+    @Builder.Default
+    private Map<Long, Game> games = new HashMap<>();
 }

@@ -2,6 +2,8 @@ package com.zhp.french.service;
 
 import com.zhp.french.domain.Route;
 import com.zhp.french.domain.RouteDto;
+import com.zhp.french.domain.Route;
+import com.zhp.french.domain.RouteDto;
 import com.zhp.french.exceptions.RouteDontExistsException;
 import com.zhp.french.exceptions.RouteExistsException;
 import com.zhp.french.exceptions.RouteNotFoundException;
@@ -35,22 +37,28 @@ public class RouteService {
     }
 
     public RouteDto create(RouteDto dto) {
-        isRouteNotExisting(dto.getId());
+        if(dto.getId() != null){
+            isRouteNotExisting(dto.getId());
+        }
         Route mapped = mapper.mapToRoute(dto);
         Route saved = repository.save(mapped);
         return mapper.mapToRouteDto(saved);
     }
 
     public RouteDto update(RouteDto dto) {
-        isRouteExisting(dto.getId());
+        if(dto.getId() != null){
+            isRouteNotExisting(dto.getId());
+        }
         Route mapped = mapper.mapToRoute(dto);
         Route saved = repository.save(mapped);
         return mapper.mapToRouteDto(saved);
     }
 
     public void delete(Long id) {
-        isRouteNotExisting(id);
-        repository.deleteById(id);
+        if(id != null){
+            isRouteNotExisting(id);
+            repository.deleteById(id);
+        }
     }
 
     private void isRouteNotExisting(Long id) {

@@ -12,9 +12,9 @@ import java.util.Date;
 @Builder
 @Data
 public class GameUserDto {
-    private long id;
+    private Long id;
     private String name;
-    private String desc;
+    private String description;
     private Date startDate;
     private Date endDate;
     private BoardGameDto board;

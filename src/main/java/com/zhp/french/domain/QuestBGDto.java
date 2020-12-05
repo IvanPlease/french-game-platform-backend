@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class QuestBGDto {
-    private long id;
+    private Long id;
     private String content;
     private String answer;
-    private int posX;
-    private int posY;
+    private Long posX;
+    private Long posY;
     private RouteDto route;
 }

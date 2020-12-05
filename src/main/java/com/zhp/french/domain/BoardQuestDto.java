@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class BoardQuestDto {
-    private long id;
-    private long currentQId;
+    private Long id;
+    private Long currentQId;
     private GameBQDto game;
 }

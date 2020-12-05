@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -14,9 +13,9 @@ import java.util.Set;
 @Builder
 @Data
 public class GameBQDto {
-    private long id;
+    private Long id;
     private String name;
-    private String desc;
+    private String description;
     private Date startDate;
     private Date endDate;
     private Set<UserBGDto> users;

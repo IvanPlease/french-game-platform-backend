@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -13,8 +12,8 @@ import java.util.Set;
 @Builder
 @Data
 public class BoardDto {
-    private long id;
-    private long currentQId;
+    private Long id;
+    private Long currentQId;
     private GameBQDto game;
     private Set<QuestBGDto> quests;
 }

@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class RouteDto {
-    private long id;
-    private int posXF;
-    private int posYF;
-    private boolean picture;
-    private int posXP;
-    private int posYP;
+    private Long id;
+    private Long posXF;
+    private Long posYF;
+    private Boolean picture;
+    private Long posXP;
+    private Long posYP;
 }

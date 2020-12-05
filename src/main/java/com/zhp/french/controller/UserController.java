@@ -3,7 +3,6 @@ package com.zhp.french.controller;
 import com.zhp.french.domain.UserDto;
 import com.zhp.french.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,31 +1,30 @@
 package com.zhp.french.domain;
 
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 
+@Entity(name = "_routes")
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Entity(name = "_routes")
+@Builder
+@Data
 public class Route {
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @NotNull
-    private int posXF;
+    private Long posXF;
     @NotNull
-    private int posYF;
+    private Long posYF;
     @NotNull
     @OneToOne(cascade = CascadeType.ALL)
     private Quest quest;
     @NotNull
-    private boolean picture;
-    private int posXP;
-    private int posYP;
+    private Boolean picture;
+    private Long posXP;
+    private Long posYP;
 }

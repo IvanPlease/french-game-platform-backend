@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -13,11 +12,11 @@ import java.util.Set;
 @Builder
 @Data
 public class QuestDto {
-    private long id;
+    private Long id;
     private String content;
     private String answer;
-    private int posX;
-    private int posY;
+    private Long posX;
+    private Long posY;
     private RouteDto route;
     private Set<BoardQuestDto> boards;
 }
