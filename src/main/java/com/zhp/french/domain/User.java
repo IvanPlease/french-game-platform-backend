@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,5 +30,5 @@ public class User {
             mappedBy = "users",
             cascade = CascadeType.MERGE,
             fetch = FetchType.EAGER)
-    private List<Game> games;
+    private Set<Game> games;
 }

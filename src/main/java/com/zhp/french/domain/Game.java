@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,7 +22,7 @@ public class Game {
     @NotNull
     private String name;
     @NotNull
-    private String desc;
+    private String description;
     @NotNull
     private Date startDate;
     @NotNull
@@ -31,9 +32,7 @@ public class Game {
     private Board board;
     @NotNull
     @ManyToMany(
-            targetEntity = User.class,
-            mappedBy = "games",
             cascade = CascadeType.MERGE,
             fetch = FetchType.EAGER)
-    private List<User> users;
+    private Set<User> users;
 }

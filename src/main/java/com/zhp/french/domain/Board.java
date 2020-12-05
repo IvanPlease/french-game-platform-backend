@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,5 +30,5 @@ public class Board {
             mappedBy = "boards",
             cascade = CascadeType.MERGE,
             fetch = FetchType.EAGER)
-    private List<Quest> quests;
+    private Set<Quest> quests;
 }

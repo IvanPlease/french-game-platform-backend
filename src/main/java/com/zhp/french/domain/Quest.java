@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,9 +30,7 @@ public class Quest {
     @OneToOne(cascade = CascadeType.ALL)
     private Route route;
     @ManyToMany(
-            targetEntity = Board.class,
-            mappedBy = "quests",
             cascade = CascadeType.MERGE,
             fetch = FetchType.EAGER)
-    private List<Board> boards;
+    private Set<Board> boards;
 }
